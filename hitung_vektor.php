@@ -40,10 +40,10 @@
                     $baristabelalternatif1 = mysqli_num_rows($tabelalternatif1);
 
                     // Deklarasi variabel dari session
-                    $totalbobot_kriteria = $_SESSION["bobotkriteria_tahunrilis"] + $_SESSION["bobotkriteria_rating"] + $_SESSION["bobotkriteria_grafis"] +$_SESSION["bobotkriteria_tingkatkesulitan"];
+                    $totalbobot_kriteria = $_SESSION["bobotkriteria_tahunrilis"] + $_SESSION["bobotkriteria_rating"] + $_SESSION["bobotkriteria_metascore"] +$_SESSION["bobotkriteria_tingkatkesulitan"];
                     $normalisasibobot_tahunrilis = $_SESSION["bobotkriteria_tahunrilis"]/$totalbobot_kriteria;
                     $normalisasibobot_rating = $_SESSION["bobotkriteria_rating"]/$totalbobot_kriteria;
-                    $normalisasibobot_grafis = $_SESSION["bobotkriteria_grafis"]/$totalbobot_kriteria;
+                    $normalisasibobot_metascore = $_SESSION["bobotkriteria_metascore"]/$totalbobot_kriteria;
                     $normalisasibobot_tingkatkesulitan = $_SESSION["bobotkriteria_tingkatkesulitan"]/$totalbobot_kriteria;
                 ?>
 
@@ -60,7 +60,7 @@
                             <?php 
                                 if ($baristabelalternatif > 0) {
                                     while($row = mysqli_fetch_assoc($tabelalternatif)) { 
-                                        $_SESSION["S".$i] = pow($row['tahun_rilis'], $normalisasibobot_tahunrilis) * pow($row['rating'], $normalisasibobot_rating) * pow($row['grafis'], $normalisasibobot_grafis) * pow($row['tingkat_kesulitan'], -($normalisasibobot_tingkatkesulitan));
+                                        $_SESSION["S".$i] = pow($row['tahun_rilis'], $normalisasibobot_tahunrilis) * pow($row['rating'], $normalisasibobot_rating) * pow($row['metascore'], $normalisasibobot_metascore) * pow($row['tingkat_kesulitan'], -($normalisasibobot_tingkatkesulitan));
                                         $total_vektors = $total_vektors + $_SESSION["S".$i];
                                         // echo "<br>S" . $i . " adalah " . $_SESSION["S".$i];
                                         $_SESSION["namagame".$i] = $row['nama_game']; ?>

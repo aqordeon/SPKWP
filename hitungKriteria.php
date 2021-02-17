@@ -53,12 +53,12 @@
                     <br>
                     <br>
 
-                    <h2 style=""><i>Grafis</i></h2>
-                    <input type="radio" id="optradio_grafis1" name="radio_grafis" value="1" required="required"><label for="optradio_grafis1">&nbsp;1&nbsp;&nbsp;</label>
-                    <input type="radio" id="optradio_grafis2" name="radio_grafis" value="2"><label for="optradio_grafis2">&nbsp;2&nbsp;&nbsp;</label>
-                    <input type="radio" id="optradio_grafis3" name="radio_grafis" value="3"><label for="optradio_grafis3">&nbsp;3&nbsp;&nbsp;</label>
-                    <input type="radio" id="optradio_grafis4" name="radio_grafis" value="4"><label for="optradio_grafis4">&nbsp;4&nbsp;&nbsp;</label>
-                    <input type="radio" id="optradio_grafis5" name="radio_grafis" value="5"><label for="optradio_grafis5">&nbsp;5&nbsp;&nbsp;</label>
+                    <h2 style=""><i>Metascore</i></h2>
+                    <input type="radio" id="optradio_metascore1" name="radio_metascore" value="1" required="required"><label for="optradio_metascore1">&nbsp;1&nbsp;&nbsp;</label>
+                    <input type="radio" id="optradio_metascore2" name="radio_metascore" value="2"><label for="optradio_metascore2">&nbsp;2&nbsp;&nbsp;</label>
+                    <input type="radio" id="optradio_metascore3" name="radio_metascore" value="3"><label for="optradio_metascore3">&nbsp;3&nbsp;&nbsp;</label>
+                    <input type="radio" id="optradio_metascore4" name="radio_metascore" value="4"><label for="optradio_metascore4">&nbsp;4&nbsp;&nbsp;</label>
+                    <input type="radio" id="optradio_metascore5" name="radio_metascore" value="5"><label for="optradio_metascore5">&nbsp;5&nbsp;&nbsp;</label>
                     <br>
                     <br>
 
@@ -82,7 +82,7 @@
         if(isset($_POST['but_upload'])){
             $_SESSION["bobotkriteria_tahunrilis"] = $_POST['radio_tahunrilis'];
             $_SESSION["bobotkriteria_rating"] = $_POST['radio_rating'];
-            $_SESSION["bobotkriteria_grafis"] = $_POST['radio_grafis'];
+            $_SESSION["bobotkriteria_metascore"] = $_POST['radio_metascore'];
             $_SESSION["bobotkriteria_tingkatkesulitan"] = $_POST['radio_tingkatkesulitan'];
             echo "<div class='alert alert-info'>Bobot Kriteria berhasil diterima.";
             echo "<meta http-equiv='refresh' content='1;url=hitung_vektor.php'>";
