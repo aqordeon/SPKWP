@@ -84,7 +84,7 @@
             $_SESSION["bobotkriteria_rating"] = $_POST['radio_rating'];
             $_SESSION["bobotkriteria_metascore"] = $_POST['radio_metascore'];
             $_SESSION["bobotkriteria_tingkatkesulitan"] = $_POST['radio_tingkatkesulitan'];
-            echo "<div class='alert alert-info'>Bobot Kriteria berhasil diterima.";
+            echo "<div class='alert alert-info'>Bobot Kriteria berhasil diterima.</div>";
             echo "<meta http-equiv='refresh' content='1;url=hitung_vektor.php'>";
         }
     ?>

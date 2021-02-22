@@ -1,3 +1,7 @@
+<?php 
+    include "koneksi.php";
+    require_once "auth.php";
+?>
 <!doctype html>
 <html>
     <head>
@@ -15,10 +19,7 @@
             }
         </style>
 
-        <?php 
-            session_start();
-            include "koneksi.php";
-        ?>
+        
     </head>
     <body>
         <a href="index.php" class="btn btn-outline-dark" style="height: 100vh; width: 10vw; position: relative; border: none; float: right;">
