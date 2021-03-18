@@ -31,9 +31,9 @@
                     <?php 
                         $i = $j = 1;
                         $total_vektors = 0;
-                        $_SESSION["first"] = $_SESSION["second"] = $_SESSION["third"] = 0;
-                        $_SESSION["rank3"] = $_SESSION["rank1"] = $_SESSION["rank2"] = 0;
-                        $_SESSION["rankgame1"]= $_SESSION["rankgame2"] = $_SESSION["rankgame3"] = "abc";
+                        $_SESSION["first"] = $_SESSION["second"] = $_SESSION["third"] = $_SESSION["fourth"] = $_SESSION["fifth"] = 0;
+                        $_SESSION["rank1"] = $_SESSION["rank2"] = $_SESSION["rank3"] = $_SESSION["rank4"] = $_SESSION["rank5"] = 0;
+                        $_SESSION["rankgame1"]= $_SESSION["rankgame2"] = $_SESSION["rankgame3"] = $_SESSION["rankgame4"] = $_SESSION["rankgame5"] = "abc";
                         
                         $tabelalternatif1 = mysqli_query($con, "SELECT * FROM tb_alternatif");
                         $baristabelalternatif = mysqli_num_rows($tabelalternatif);
@@ -53,6 +53,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col" style="text-align: center;">Vektor S</th>
+                                    <th scope="col">Rumus</th>
                                     <th scope="col">Nilai Vektor S</th>
                                 </tr>
                             </thead>
@@ -61,18 +62,19 @@
                                     if ($baristabelalternatif > 0) {
                                         while($row = mysqli_fetch_assoc($tabelalternatif)) { 
                                             // konversi nilai ke skala 1-5
-                                            $konversitahunrilis = $row['tahun_rilis'] >= 2020 ? 5 : (2018 <= $row['tahun_rilis'] && $row['tahun_rilis'] <= 2019 ? 4 : (2015 <= $row['tahun_rilis'] && $row['tahun_rilis']<= 2017 ? 3 : (2012 <= $row['tahun_rilis'] && $row['tahun_rilis']<= 2014 ? 2 : 1)));
                                             $konversirating = $row['rating'] >= 4.4 ? 5 : (4.1 <= $row['rating'] && $row['rating'] < 4.4 ? 4 : (3.7 <= $row['rating'] && $row['rating']< 4.1 ? 3 : (3.1 <= $row['rating'] && $row['rating'] < 3.7 ? 2 : 1)));
+                                            $konversitahunrilis = $row['tahun_rilis'] >= 2020 ? 5 : (2018 <= $row['tahun_rilis'] && $row['tahun_rilis'] <= 2019 ? 4 : (2015 <= $row['tahun_rilis'] && $row['tahun_rilis']<= 2017 ? 3 : (2012 <= $row['tahun_rilis'] && $row['tahun_rilis']<= 2014 ? 2 : 1)));
                                             $konversitingkatkesulitan = $row['tingkat_kesulitan'] >= 4.4 ? 5 : (4.1 <= $row['tingkat_kesulitan'] && $row['tingkat_kesulitan'] < 4.4 ? 4 : (3.7 <= $row['tingkat_kesulitan'] && $row['tingkat_kesulitan']< 4.1 ? 3 : (3.1 <= $row['tingkat_kesulitan'] && $row['tingkat_kesulitan']< 3.7 ? 2 : 1)));
                                             $konversimetascore = $row['metascore'] >= 91 ? 5 : (83 <= $row['metascore'] && $row['metascore'] < 91 ? 4 : (67 <= $row['metascore'] && $row['metascore']< 83 ? 3 : (58 <= $row['metascore'] && $row['metascore']< 83 ? 2 : 1)));
                                             
                                             // hitung vektor S
-                                            $_SESSION["S".$i] = pow($konversitahunrilis, $normalisasibobot_tahunrilis) * pow($konversirating, $normalisasibobot_rating) * pow($konversimetascore, $normalisasibobot_metascore) * pow($konversitingkatkesulitan, $normalisasibobot_tingkatkesulitan);
+                                            $_SESSION["S".$i] = pow($konversirating, $normalisasibobot_rating) * pow($konversitahunrilis, $normalisasibobot_tahunrilis) * pow($konversitingkatkesulitan, $normalisasibobot_tingkatkesulitan) * pow($konversimetascore, $normalisasibobot_metascore) ;
                                             $total_vektors = $total_vektors + $_SESSION["S".$i];
                                             // echo "<br>S" . $i . " adalah " . $_SESSION["S".$i];
                                             $_SESSION["namagame".$i] = $row['nama_game']; ?>
                                             <tr>
                                                 <th scope="row" style="text-align: center;"><?php echo "S$i" ?></th>
+                                                <td><?php echo "(" . $konversirating . "^" . $normalisasibobot_rating . ") * (" . $konversitahunrilis . "^" . $normalisasibobot_tahunrilis . ") * (" . $konversitingkatkesulitan . "^" . $normalisasibobot_tingkatkesulitan . ") * (" . $konversimetascore . "^" . $normalisasibobot_metascore . ")"; ?>
                                                 <td><?php echo $_SESSION["S".$i]; ?></td>
                                             </tr>
                                             <?php $i++;
@@ -132,36 +134,74 @@
                                     // Perangkingan hasil akhir
                                     $tampungnilaisessionv = $_SESSION["V".$no];
                                     if ($tampungnilaisessionv > $_SESSION["first"]){ // perankingan 1
+                                        $_SESSION["fifth"] = $_SESSION["fourth"];
+                                        $_SESSION["fourth"] = $_SESSION["third"];
                                         $_SESSION["third"] = $_SESSION["second"];
                                         $_SESSION["second"] = $_SESSION["first"]; 
                                         $_SESSION["first"] = $tampungnilaisessionv;
                                         
+                                        $_SESSION["rank5"] = $_SESSION["rank4"];
+                                        $_SESSION["rank4"] = $_SESSION["rank3"];
                                         $_SESSION["rank3"] = $_SESSION["rank2"];
                                         $_SESSION["rank2"] = $_SESSION["rank1"];
                                         $_SESSION["rank1"] = "V".$no;
 
+                                        $_SESSION["rankgame5"] = $_SESSION["rankgame4"];
+                                        $_SESSION["rankgame4"] = $_SESSION["rankgame3"];
                                         $_SESSION["rankgame3"] = $_SESSION["rankgame2"];
                                         $_SESSION["rankgame2"] = $_SESSION["rankgame1"];
                                         $_SESSION["rankgame1"] = $_SESSION['namagame'.$no];
                                     }
 
                                     else if ($tampungnilaisessionv > $_SESSION["second"]){ // perankingan 2
-                                        $_SESSION["third"] = $_SESSION["second"]; 
+                                        $_SESSION["fifth"] = $_SESSION["fourth"];
+                                        $_SESSION["fourth"] = $_SESSION["third"];
+                                        $_SESSION["third"] = $_SESSION["second"];
                                         $_SESSION["second"] = $tampungnilaisessionv; 
 
+                                        $_SESSION["rank5"] = $_SESSION["rank4"];
+                                        $_SESSION["rank4"] = $_SESSION["rank3"];
                                         $_SESSION["rank3"] = $_SESSION["rank2"];
                                         $_SESSION["rank2"] = "V".$no;
 
+                                        $_SESSION["rankgame5"] = $_SESSION["rankgame4"];
+                                        $_SESSION["rankgame4"] = $_SESSION["rankgame3"];
                                         $_SESSION["rankgame3"] = $_SESSION["rankgame2"];
                                         $_SESSION["rankgame2"] = $_SESSION['namagame'.$no];
                                     }
 
-                                    else if ($tampungnilaisessionv > $_SESSION["third"]){ // perankingan 3
-                                        $_SESSION["third"] = $tampungnilaisessionv;
 
+                                    else if ($tampungnilaisessionv > $_SESSION["third"]){ // perankingan 3
+                                        $_SESSION["fifth"] = $_SESSION["fourth"];
+                                        $_SESSION["fourth"] = $_SESSION["third"];
+                                        $_SESSION["third"] = $tampungnilaisessionv;
+                                        
+                                        $_SESSION["rank5"] = $_SESSION["rank4"];
+                                        $_SESSION["rank4"] = $_SESSION["rank3"];
                                         $_SESSION["rank3"] = "V".$no;
 
+                                        $_SESSION["rankgame5"] = $_SESSION["rankgame4"];
+                                        $_SESSION["rankgame4"] = $_SESSION["rankgame3"];
                                         $_SESSION["rankgame3"] = $_SESSION['namagame'.$no];
+                                    }
+
+                                    else if ($tampungnilaisessionv > $_SESSION["fourth"]){ // perankingan 4
+                                        $_SESSION["fifth"] = $_SESSION["fourth"];
+                                        $_SESSION["fourth"] = $tampungnilaisessionv; 
+
+                                        $_SESSION["rank5"] = $_SESSION["rank4"];
+                                        $_SESSION["rank4"] = "V".$no;
+
+                                        $_SESSION["rankgame5"] = $_SESSION["rankgame4"];
+                                        $_SESSION["rankgame4"] = $_SESSION['namagame'.$no];
+                                    }
+
+                                    else if ($tampungnilaisessionv > $_SESSION["fifth"]){ // perankingan 5
+                                        $_SESSION["fifth"] = $tampungnilaisessionv;
+
+                                        $_SESSION["rank5"] = "V".$no;
+
+                                        $_SESSION["rankgame5"] = $_SESSION['namagame'.$no];
                                     }
                                 ?>
                             </tr>

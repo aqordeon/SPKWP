@@ -56,6 +56,18 @@
                                 <td><?php echo $_SESSION["rankgame3"]; ?></td>
                                 <td><?php echo $_SESSION["third"]; ?></td>
                             </tr>
+                            <tr>
+                                <th scope="row" style="text-align: center;">4</th>
+                                <td><?php echo $_SESSION["rank4"]; ?></td>
+                                <td><?php echo $_SESSION["rankgame4"]; ?></td>
+                                <td><?php echo $_SESSION["fourth"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" style="text-align: center;">5</th>
+                                <td><?php echo $_SESSION["rank5"]; ?></td>
+                                <td><?php echo $_SESSION["rankgame5"]; ?></td>
+                                <td><?php echo $_SESSION["fifth"]; ?></td>
+                            </tr>
                         </tbody>
                     </table>
             </div>

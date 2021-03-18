@@ -53,22 +53,22 @@
                     <br>
                     <br>
 
-                    <h2 style=""><i>Metascore</i></h2>
-                    <input type="radio" id="optradio_metascore1" name="radio_metascore" value="1" required="required"><label for="optradio_metascore1">&nbsp;1&nbsp;&nbsp;</label>
-                    <input type="radio" id="optradio_metascore2" name="radio_metascore" value="2"><label for="optradio_metascore2">&nbsp;2&nbsp;&nbsp;</label>
-                    <input type="radio" id="optradio_metascore3" name="radio_metascore" value="3"><label for="optradio_metascore3">&nbsp;3&nbsp;&nbsp;</label>
-                    <input type="radio" id="optradio_metascore4" name="radio_metascore" value="4"><label for="optradio_metascore4">&nbsp;4&nbsp;&nbsp;</label>
-                    <input type="radio" id="optradio_metascore5" name="radio_metascore" value="5"><label for="optradio_metascore5">&nbsp;5&nbsp;&nbsp;</label>
-                    <br>
-                    <br>
-
                     <h2 style=""><i>Tingkat Kesulitan</i></h2>
                     <input type="radio" id="optradio_tingkatkesulitan1" name="radio_tingkatkesulitan" value="1" required="required"><label for="optradio_tingkatkesulitan1">&nbsp;1&nbsp;&nbsp;</label>
                     <input type="radio" id="optradio_tingkatkesulitan2" name="radio_tingkatkesulitan" value="2"><label for="optradio_tingkatkesulitan2">&nbsp;2&nbsp;&nbsp;</label>
                     <input type="radio" id="optradio_tingkatkesulitan3" name="radio_tingkatkesulitan" value="3"><label for="optradio_tingkatkesulitan3">&nbsp;3&nbsp;&nbsp;</label>
                     <input type="radio" id="optradio_tingkatkesulitan4" name="radio_tingkatkesulitan" value="4"><label for="optradio_tingkatkesulitan4">&nbsp;4&nbsp;&nbsp;</label>
                     <input type="radio" id="optradio_tingkatkesulitan5" name="radio_tingkatkesulitan" value="5"><label for="optradio_tingkatkesulitan5">&nbsp;5&nbsp;&nbsp;</label>
-                
+                    <br>
+                    <br>
+
+                    <h2 style=""><i>Metascore</i></h2>
+                    <input type="radio" id="optradio_metascore1" name="radio_metascore" value="1" required="required"><label for="optradio_metascore1">&nbsp;1&nbsp;&nbsp;</label>
+                    <input type="radio" id="optradio_metascore2" name="radio_metascore" value="2"><label for="optradio_metascore2">&nbsp;2&nbsp;&nbsp;</label>
+                    <input type="radio" id="optradio_metascore3" name="radio_metascore" value="3"><label for="optradio_metascore3">&nbsp;3&nbsp;&nbsp;</label>
+                    <input type="radio" id="optradio_metascore4" name="radio_metascore" value="4"><label for="optradio_metascore4">&nbsp;4&nbsp;&nbsp;</label>
+                    <input type="radio" id="optradio_metascore5" name="radio_metascore" value="5"><label for="optradio_metascore5">&nbsp;5&nbsp;&nbsp;</label>
+                                        
                     <br><Br>
                     <input type='submit' class="btn btn-primary btn-lg" value='Hitung' name='but_upload'>
                 </form>
